@@ -20,6 +20,10 @@ const Navbar = () => {
       title: "Foods",
       path: "/meals",
     },
+    {
+      title: "block",
+      path: "/",
+    },
   ];
 
   return (
