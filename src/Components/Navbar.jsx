@@ -33,45 +33,47 @@ const Navbar = () => {
         <h1 className="text-3xl font-bold">Concept 2</h1>
 
         {/* Hamburger Menu (Mobile) */}
-        <button
-          className="block md:hidden text-2xl"
-          onClick={() => setMenuOpen((prev) => !prev)}
-        >
-          {menuOpen ? "✖" : "☰"}
-        </button>
+        <div>
+          <button
+            className="block md:hidden text-2xl"
+            onClick={() => setMenuOpen((prev) => !prev)}
+          >
+            {menuOpen ? "✖" : "☰"}
+          </button>
 
-        {/* Desktop Links */}
-        <ul className="hidden md:flex gap-x-6">
-          {navLinks.map((link, idx) => (
-            <li
-              key={idx}
-              className={`${
-                pathName === link.path ? "text-blue-500" : "text-black"
-              } font-semibold`}
-            >
-              <Link href={link?.path}>{link?.title}</Link>
-            </li>
-          ))}
-        </ul>
+          {/* Desktop Links */}
+          <ul className="hidden md:flex gap-x-6">
+            {navLinks.map((link, idx) => (
+              <li
+                key={idx}
+                className={`${
+                  pathName === link.path ? "text-blue-500" : "text-black"
+                } font-semibold`}
+              >
+                <Link href={link?.path}>{link?.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Mobile Links */}
+        {menuOpen && (
+          <ul className="md:hidden flex flex-col gap-y-2 px-4 py-2">
+            {navLinks.map((link, idx) => (
+              <li
+                key={idx}
+                className={`${
+                  pathName === link.path ? "text-blue-500" : "text-black"
+                } font-semibold`}
+              >
+                <Link href={link?.path} onClick={() => setMenuOpen(false)}>
+                  {link?.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-
-      {/* Mobile Links */}
-      {menuOpen && (
-        <ul className="md:hidden flex flex-col gap-y-2 px-4 py-2">
-          {navLinks.map((link, idx) => (
-            <li
-              key={idx}
-              className={`${
-                pathName === link.path ? "text-blue-500" : "text-black"
-              } font-semibold`}
-            >
-              <Link href={link?.path} onClick={() => setMenuOpen(false)}>
-                {link?.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
     </nav>
   );
 };
