@@ -72,13 +72,13 @@ const SearchMeals = () => {
               key={meal?.idMeal}
               className="bg-white shadow-md max-w-96 rounded-lg overflow-hidden transition-transform transform hover:scale-105"
             >
-              <div className="relative w-full h-48">
+              <div className="relative w-full max-h-96 h-auto">
                 <Image
                   src={meal?.strMealThumb}
                   alt={meal?.strMeal}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-t-lg h-"
+                  width={500}
+                  height={500}
+                  className="rounded-t-lg w-full"
                 />
               </div>
               <div className="p-4">
