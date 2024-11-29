@@ -19,10 +19,10 @@ const SearchMeals = () => {
     );
     const data = await res.json();
 
-    // console.log(data.meals);
     if (data.meals == "no data found") {
-      setErr("Meal Not Founded");
+      setErr("Meal Not Found");
     } else {
+      setErr(""); // Clear error message
       setMeals(data.meals);
     }
   };
@@ -30,20 +30,15 @@ const SearchMeals = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(e.target.search.value);
     setSearch(e.target.search.value);
-    loadMeals();
   };
 
   useEffect(() => {
     if (search.trim()) {
       loadMeals();
-      setSearch(" ");
     }
   }, [search]);
-  if (!meals) {
-    return;
-  }
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
       <h1 className="text-3xl font-bold mb-6">Search Meals</h1>
@@ -67,7 +62,7 @@ const SearchMeals = () => {
         </button>
       </form>
 
-      {err && <p>{err}</p>}
+      {err && <p className="text-red-500">{err}</p>}
 
       {meals.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 w-full">
@@ -75,7 +70,7 @@ const SearchMeals = () => {
             <Link
               href={`/meals/${meal?.idMeal}`}
               key={meal?.idMeal}
-              className="bg-white shadow-md rounded-lg overflow-hidden"
+              className="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105"
             >
               <div className="relative w-full h-48">
                 <Image
@@ -87,7 +82,9 @@ const SearchMeals = () => {
                 />
               </div>
               <div className="p-4">
-                <h2 className="text-xl font-semibold">{meal?.strMeal}</h2>
+                <h2 className="text-lg font-semibold truncate">
+                  {meal?.strMeal}
+                </h2>
                 <p className="text-sm text-gray-500 mb-2">
                   Category: {meal?.strCategory}
                 </p>
@@ -99,7 +96,6 @@ const SearchMeals = () => {
           ))}
         </div>
       )}
-      {/* Display meals */}
     </div>
   );
 };
