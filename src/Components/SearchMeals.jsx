@@ -70,7 +70,7 @@ const SearchMeals = () => {
             <Link
               href={`/meals/${meal?.idMeal}`}
               key={meal?.idMeal}
-              className="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105"
+              className="bg-white shadow-md max-w-96 rounded-lg overflow-hidden transition-transform transform hover:scale-105"
             >
               <div className="relative w-full h-48">
                 <Image
@@ -78,7 +78,7 @@ const SearchMeals = () => {
                   alt={meal?.strMeal}
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-t-lg"
+                  className="rounded-t-lg h-"
                 />
               </div>
               <div className="p-4">
