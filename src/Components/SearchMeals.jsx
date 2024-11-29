@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -72,7 +72,7 @@ const SearchMeals = () => {
               key={meal?.idMeal}
               className="bg-white shadow-md max-w-96 rounded-lg overflow-hidden transition-transform transform hover:scale-105"
             >
-              <div className="relative w-full max-h-96 h-auto">
+              {/* <div className="relative w-full max-h-96 h-auto">
                 <Image
                   src={meal?.strMealThumb}
                   alt={meal?.strMeal}
@@ -80,7 +80,7 @@ const SearchMeals = () => {
                   height={500}
                   className="rounded-t-lg w-full"
                 />
-              </div>
+              </div> */}
               <div className="p-4">
                 <h2 className="text-lg font-semibold truncate">
                   {meal?.strMeal}
