@@ -70,7 +70,7 @@ const SearchMeals = () => {
             <Link
               href={`/meals/${meal?.idMeal}`}
               key={meal?.idMeal}
-              className="bg-white shadow-md max-w-96 rounded-lg overflow-hidden transition-transform transform hover:scale-105"
+              className="bg-white shadow-md max-w-96 rounded-lg overflow-hidden transition-transform transform hover:scale-105 block"
             >
               {/* <div className="relative w-full max-h-96 h-auto">
                 <Image
